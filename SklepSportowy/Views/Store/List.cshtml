@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Repository.Models.Product>
+@{
+    ViewBag.Title = "List";
+}
+
+<div id="productlist-content">
+    @Html.Action("Menu", "Store")
+
+    <div id="product-rightsection">
+        <div class="products-by-cat">
+            <ul>
+                @foreach (var prod in Model)
+                {
+
+                    {
+                        <li>
+                            @prod.Name
+                            @prod.Description
+                            @prod.Price.ToString()
+                        </li>
+
+                    }
+                }
+            </ul>
+
+            <form id="search-form">
+                <input id="search-filter" type="search" name="searchQuery"
+                       data-autocomplete-source="@Html.Action("ProductsSuggestion")"
+                       placeholder="Wprowadz tekst, aby wyfiltrować..." />
+                <input type="submit" value="" />
+            </form>
+        </div>
+    </div>
+</div>
+@section ScriptsBottom
+    {
+        @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+        
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        
+        <script>
+            $(function () {
+                var setupAutoComplete = function () {
+                    var $input = $(this);
+                    var options = {
+                        source: $input.attr("data-autocomplete-source")
+                    };
+                    $input.autocomplete(options);
+                };
+                $("#search-filter").each(setupAutoComplete);
+            });
+
+        </script>
+
+    }
+

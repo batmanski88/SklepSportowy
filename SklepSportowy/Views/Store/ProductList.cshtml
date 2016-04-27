@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Repository.Models.Product>
+
+<div class="product-list">
+    <table class="products-table">
+        @foreach (var pro in Model)
+        {
+            <tr>
+                <td>@pro.CovertFileName</td>
+                <td>@pro.Name</td>
+                <td>@pro.Description</td>
+                <td>@pro.Price</td>
+            </tr>
+        }
+    </table>
+
+
+</div>

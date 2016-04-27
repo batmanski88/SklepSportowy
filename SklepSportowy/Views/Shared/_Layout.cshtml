@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title = Witaj w naszym sklepie!!!</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="head">
+        <a title="title">Czas na sport - Sklep Sportowy Online</a>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer class="foot">
+       
+           <ul>
+               <li><a href="">O nas</a></li>
+               <li><a href="">Kontakt</a></li>
+               <li><a href="">Wysyłka</a></li>
+               <li><a href="">Regulamin</a></li>
+           </ul>
+       
+    </footer>
+    @RenderSection("ScriptsBottom", required: false)
+</body>
+</html>

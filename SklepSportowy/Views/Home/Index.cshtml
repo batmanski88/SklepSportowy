@@ -1,0 +1,37 @@
+﻿@model SklepSportowy.ViewModels.HomeViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+  <nav class="categories-horizontal">
+      <ul>
+          @foreach (var cat in Model.Categories)
+          {
+          <li >
+              <a href="@Url.Action("List", "Store", new {categoryID = cat.CategoryID.ToString() })">
+              <img src="~/Content/Icons/@cat.IconFilename" />
+              @cat.Name
+              </a>
+              
+          </li>
+          }
+      </ul>
+  </nav>
+<section class="products">
+    
+       
+            <table class="products-table">
+                @foreach (var pro in Model.Products)
+                {
+                <tr>
+                    <td>@pro.CovertFileName</td>
+                    <td>@pro.Name</td>
+                    <td>@pro.Description</td>
+                    <td>@pro.Price</td>
+                </tr>
+                }
+            </table>
+       
+
+</section>
+
