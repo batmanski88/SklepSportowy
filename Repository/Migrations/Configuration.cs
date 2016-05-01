@@ -1,18 +1,18 @@
-namespace Repository.Migrations
+namespace SklepSportowy.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Repository.Models.SportStoreContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SklepSportowy.Models.SportStoreContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Repository.Models.SportStoreContext context)
+        protected override void Seed(SklepSportowy.Models.SportStoreContext context)
         {
             //  This method will be called after migrating to the latest version.
 

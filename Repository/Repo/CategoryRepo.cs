@@ -1,12 +1,12 @@
-﻿using Repository.Irepo;
-using Repository.Models;
+﻿using SklepSportowy.Irepo;
+using SklepSportowy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Repo
+namespace SklepSportowy.Repo
 {
     public class CategoryRepo : ICategoryRepo
     {

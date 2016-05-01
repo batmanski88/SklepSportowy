@@ -1,5 +1,5 @@
-﻿using Repository.Irepo;
-using Repository.Models;
+﻿
+using SklepSportowy.Models;
 using SklepSportowy.Infrastructure;
 using SklepSportowy.ViewModels;
 using System;
@@ -12,19 +12,14 @@ namespace SklepSportowy.Controllers
 {
     public class HomeController : Controller
     {
-        private IProductRepo _proRepo;
 
-        private ICategoryRepo _catRepo;
-
+        private SportStoreContext _db;      
         
-
-        
-
-        public HomeController(IProductRepo proRepo, ICategoryRepo catRepo)
+        public HomeController(SportStoreContext db)
         {
-            _proRepo = proRepo;
-            _catRepo = catRepo;
-        }
+            _db = db;
+        }  
+
         // GET: Home
         public ActionResult Index()
         {
@@ -38,12 +33,12 @@ namespace SklepSportowy.Controllers
             }
             else
             {
-                NewArrivals = _proRepo.LoadProducts().OrderBy(g => Guid.NewGuid()).Take(6).ToList();
+                NewArrivals =_db.Products.OrderBy(g => Guid.NewGuid()).Take(6).ToList();
                 cache.Set(Const.NewItemCacheKey, NewArrivals, 30);
             }
-            var categories = _catRepo.LoadCategories().ToList();
+            var categories = _db.Categories.ToList();
 
-            var products = _proRepo.LoadProducts().OrderBy(g => Guid.NewGuid()).Take(6).ToList();
+            var products = _db.Products.OrderBy(g => Guid.NewGuid()).Take(6).ToList();
 
             var vm = new HomeViewModel()
             {

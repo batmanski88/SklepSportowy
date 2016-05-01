@@ -1,17 +1,20 @@
-﻿@model IEnumerable<Repository.Models.Product>
+﻿@model IEnumerable<SklepSportowy.Models.Product>
 
-<div class="product-list">
-    <table class="products-table">
+<div id="productlist-section">
+    <ul class="products-line">
         @foreach (var pro in Model)
         {
-            <tr>
-                <td>@pro.CovertFileName</td>
-                <td>@pro.Name</td>
-                <td>@pro.Description</td>
-                <td>@pro.Price</td>
-            </tr>
+            
+                <li>@pro.Name</li>
+                <li>@pro.Price</li>
+                <li>
+                    <article>
+                        <a class="addtocartlink" href="@Url.Action("AddToCart", "Cart", new {id = pro.ProductID })">Dodaj do koszyka</a>
+                    </article>
+                </li>
+            
         }
-    </table>
-
+    
+    </ul>
 
 </div>

@@ -1,4 +1,4 @@
-﻿using SklepSportowy.Irepo;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SklepSportowy.Models
 {
-    public class SportStoreContext : DbContext, ISportStoreContext
+    public class SportStoreContext : DbContext
     {
         public SportStoreContext() 
             :base("SportStoreDB")

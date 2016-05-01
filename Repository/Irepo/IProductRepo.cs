@@ -1,11 +1,11 @@
-﻿using Repository.Models;
+﻿using SklepSportowy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Irepo
+namespace SklepSportowy.Irepo
 {
     public interface IProductRepo
     {

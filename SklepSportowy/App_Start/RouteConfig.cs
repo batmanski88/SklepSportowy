@@ -15,8 +15,9 @@ namespace SklepSportowy
 
             routes.MapRoute(
                 name: "Product-Category",
-                url: "Category/{categoryID}",
+                url: "Category/{currentCategory}",
                 defaults: new { controller = "Store", action = "List" });
+
 
             routes.MapRoute(
                 name: "Default",

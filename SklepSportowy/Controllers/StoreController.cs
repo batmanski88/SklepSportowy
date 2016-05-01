@@ -1,4 +1,5 @@
-﻿using Repository.Irepo;
+﻿
+using SklepSportowy.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,32 +12,35 @@ namespace SklepSportowy.Controllers
 {
     public class StoreController : Controller
     {
-        private IProductRepo _proRepo;
-        private ICategoryRepo _catRepo;
+        private SportStoreContext _db;
 
-        public StoreController(IProductRepo proRepo, ICategoryRepo catRepo)
+        public StoreController(SportStoreContext db)
         {
-            _proRepo = proRepo;
-            _catRepo = catRepo;
+            _db = db;
         }
 
-        public ActionResult List(int categoryID)
+        public ActionResult List(string currentCategory, string searchQuery = null)
         {
-            ViewBag.CategoryID = categoryID;
-            var products = _proRepo.LoadProducts().Where(p => p.CategoryID == categoryID).ToList();
+            var category = _db.Categories.Include("Products").Where(g => g.Name.ToUpper() == currentCategory.ToUpper()).Single();
+            var products = category.Products.Where(p => (searchQuery == null || p.Name.ToLower().Contains(searchQuery.ToLower()))).ToList();
+
+            if(Request.IsAjaxRequest())
+            {
+                return PartialView("ProductList", products);
+            }
             return View(products);
         }
 
-        
+        [ChildActionOnly]
         public ActionResult Menu()
         {
-            var categories = _catRepo.LoadCategories().ToList();
+            var categories = _db.Categories.ToList();
             return PartialView(categories);
         }
 
-        public ActionResult ProductsSuggestion(string term)
+       public ActionResult ProductsSuggestions(string term)
         {
-            var products = this._proRepo.LoadProducts().Where(p => p.Name.ToLower().Contains(term.ToLower())).Take(5).Select(p => new { label = p.Name });
+            var products = _db.Products.Where(p => p.Name.ToLower().Contains(term.ToLower())).Take(5).Select(p => new { label = p.Name });
 
             return Json(products, JsonRequestBehavior.AllowGet);
         }

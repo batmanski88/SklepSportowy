@@ -1,4 +1,4 @@
-namespace Repository.Migrations
+namespace SklepSportowy.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

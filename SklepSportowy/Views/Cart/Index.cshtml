@@ -1,0 +1,85 @@
+﻿@model SklepSportowy.ViewModels.CartViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="productlist-content">
+    @Html.Action("Menu", "Store")
+    <div id="product-rightsection">
+
+        <section class="content-section">
+            <div class="section-header">
+                <h1>Twój koszyk</h1>
+            </div>
+            <table id="cart-table">
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr id="cart-row-@item.Product.ProductID">
+                        <td>@item.Product.Name</td>
+                        <td>@item.Product.Description</td>
+                        <td>Ilość: <span id="cart-item-count-@item.Product.ProductID">@item.Quantity</span></td>
+                        <td>@String.Format("{0:0.##}", item.TotalPrice) zł</td>
+                        <td><a class="remove-product" data-id="@item.Product.ProductID" href="#">Usuń</a></td>
+
+                    </tr>
+
+                    <tr id="cart-empty-message" @if (Model.CartItems !=null && Model.CartItems.Count>
+                        0) {
+                        <text> class="hidden" </text>}>
+                        <td>Twój Koszyk jest pusty!</td>
+                    </tr>
+                }
+            </table>
+            <div id="total-price">
+                Razem: <span id="total-price-value">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł
+            </div>
+
+            <div class="section-button-container">
+                <a class="button-link" href="">Kontynuuj zakupy</a>
+                @if (Model.TotalPrice > 0)
+                {
+                   // <a class="button-link" id="cart-button-checkout" href="@Html.Action("Checkout", "Cart")">Kupuję</a>
+                }
+            </div>
+        </section>
+
+    </div>
+</div>
+
+@section ScriptsBottom{
+        
+     @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+         
+    <script>
+        $(function () {
+            $(".remove-product").click(function () {
+                var recordToDelete = $(this).attr("data-id");
+
+                if (recordToDelete != '') {
+                    $.post("/Cart/RemoveFromCart", { "productID": recordToDelete },
+                        function (response) {
+                            if (response.RemoveItemCount == 0) {
+                                $("#cart-row" + response.RemoveItemId).fadeOut('slow', function () {
+                                    if (response.CartItemCount == 0) {
+                                        $("#cart-empty-message").removeClass("hidden");
+                                    }
+                                });
+                            } else {
+                                $("#cart-item-count-" + response.RemoveItemId).text(response.RemoveItemCount);
+                            }
+                            if (response.CartItemCount == 0) {
+                                $("cart-button-checkout").addClass("hiddden");
+                                $("#total-price").addClass("invisible");
+                            }
+
+
+                        });
+                    return false;
+                }
+            });
+        })  
+    </script>
+    }
+

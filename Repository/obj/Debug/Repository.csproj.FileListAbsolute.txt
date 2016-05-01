@@ -64,8 +64,8 @@ C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\bin
 C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\bin\Debug\System.Web.WebPages.xml
 C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\bin\Debug\System.Web.WebPages.Razor.xml
-C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\obj\Debug\Repository.Migrations.startowa.resources
 C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\obj\Debug\Repository.csproj.GenerateResource.Cache
 C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\obj\Debug\Repository.dll
 C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\obj\Debug\Repository.pdb
+C:\Users\Asia\Documents\Visual Studio 2015\Projects\SklepSportowy\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache

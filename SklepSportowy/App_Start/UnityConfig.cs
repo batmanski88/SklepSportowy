@@ -1,9 +1,7 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using Repository.Irepo;
-using Repository.Repo;
-using Repository.Models;
+using SklepSportowy.Models;
 
 namespace SklepSportowy.App_Start
 {
@@ -39,10 +37,8 @@ namespace SklepSportowy.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IProductRepo, ProductRepo>();
-            container.RegisterType<ICategoryRepo, CategoryRepo>();
-            container.RegisterType<ISportStoreContext, SportStoreContext>();
+            // container.RegisterType<IProductSklepSportowy, ProductSklepSportowy>();
+            
         }
     }
 }

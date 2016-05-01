@@ -8,7 +8,7 @@
           @foreach (var cat in Model.Categories)
           {
           <li >
-              <a href="@Url.Action("List", "Store", new {categoryID = cat.CategoryID.ToString() })">
+              <a href="@Url.Action("List", "Store", new {currentCategory = cat.Name })">
               <img src="~/Content/Icons/@cat.IconFilename" />
               @cat.Name
               </a>
